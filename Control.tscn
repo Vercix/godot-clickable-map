@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Control.gd" type="Script" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://test_map.png" type="Texture" id=3]
+[ext_resource path="res://map.png" type="Texture" id=4]
+[ext_resource path="res://lookup_map.png" type="Texture" id=5]
+[ext_resource path="res://selectable_shader.shader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 6 )
+shader_param/selected_area = null
+shader_param/lookup_texture = ExtResource( 5 )
+shader_param/color_texture = ExtResource( 3 )
+
+[node name="Root" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 408.0
+margin_bottom = 426.0
+
+[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer"]
+margin_right = 401.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel/HBoxContainer"]
+margin_right = 130.0
+margin_bottom = 14.0
+text = "Selected Area: None"
+
+[node name="ViewportContainer" type="ViewportContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 401.0
+margin_bottom = 419.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="PanelContainer/VBoxContainer/ViewportContainer"]
+size = Vector2( 401, 401 )
+size_override_stretch = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Main" type="Node2D" parent="PanelContainer/VBoxContainer/ViewportContainer/Viewport"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="PanelContainer/VBoxContainer/ViewportContainer/Viewport/Main"]
+material = SubResource( 1 )
+texture = ExtResource( 4 )
+centered = false
+[connection signal="selected_area" from="PanelContainer/VBoxContainer/ViewportContainer/Viewport/Main" to="." method="_on_Main_selected_area"]
