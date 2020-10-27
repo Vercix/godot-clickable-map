@@ -3,4 +3,4 @@ A simple Godot demo project demonstrating how to create a selectable map. As tho
 
 
 # How to use:
-You can find a [tutorial](https://odd-door.com) at my website.
+You can find a [tutorial](https://www.odd-door.com/post/show/Godot_Selectable_Map_Tutorial_839) at my website.
