@@ -1,17 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
-[ext_resource path="res://test_map.png" type="Texture" id=3]
 [ext_resource path="res://map.png" type="Texture" id=4]
-[ext_resource path="res://lookup_map.png" type="Texture" id=5]
 [ext_resource path="res://selectable_shader.shader" type="Shader" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
 shader_param/selected_area = null
-shader_param/lookup_texture = ExtResource( 5 )
-shader_param/color_texture = ExtResource( 3 )
 
 [node name="Root" type="Control"]
 anchor_right = 1.0
